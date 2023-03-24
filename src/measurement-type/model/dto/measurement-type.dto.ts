@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString, NotContains } from "class-validator";
 
-export class MeasurementDto {
+export class MeasurementTypeDto {
     @IsString()
     @IsNotEmpty()
     name: string

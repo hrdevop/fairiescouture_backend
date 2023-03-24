@@ -1,10 +1,13 @@
-import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { MeasurementInterface } from './measurement.interface';
+import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate, CreateDateColumn, UpdateDateColumn, Index } from 'typeorm';
+import { MeasurementTypeInterface } from './measurement-type.interface';
+
 @Entity()
-export class Measurements implements MeasurementInterface {
+export class MeasurementType implements MeasurementTypeInterface {
+    
     @PrimaryGeneratedColumn('uuid')
     id: string;
-
+    
+    @Index()
     @Column({ unique: true, nullable: false })
     name: string;
 

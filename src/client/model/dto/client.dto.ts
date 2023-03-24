@@ -1,5 +1,6 @@
-import { Allow, IsEmail, IsEmpty, IsInt, IsNotEmpty, IsOptional, IsString, Length } from 'class-validator';
+import { Allow, IsEmail, IsEmpty, IsInt, IsNotEmpty, IsOptional, IsString, Length, isPassportNumber, IsPhoneNumber } from 'class-validator';
 import { ClientInterface } from './../client.interface';
+import { Transform } from 'class-transformer';
 
 export class ClientDto extends ClientInterface {
 
@@ -12,9 +13,8 @@ export class ClientDto extends ClientInterface {
     lastName?: string;
 
     @IsOptional()
-    @IsInt()
-    @Length(10, 10)
-    phoneNumber?: number;
+    @IsPhoneNumber('IN')
+    phoneNumber?: string;
 
     @IsOptional()
     @IsEmail()

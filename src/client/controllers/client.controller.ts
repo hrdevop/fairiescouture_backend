@@ -1,5 +1,5 @@
 import { ClientDto } from '../model/dto/client.dto';
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ClientHelperService } from '../services/client-helper.service';
 import { ClientService } from '../services/client.service';
 
@@ -15,5 +15,10 @@ export class ClientController {
     create(@Body() clientData: ClientDto) {
         let clientEntity = this.clientHelperService.createClientDtoToEntity(clientData)
         return this.clientService.create(clientEntity)
+    }
+
+    @Get('list')
+    getList() {
+        return this.clientService.getList()
     }
 }

@@ -1,7 +1,7 @@
 export class ClientInterface {
     firstName: string;
     lastName?: string | null;
-    phoneNumber?: number;
+    phoneNumber?: string;
     emailId?: string | null;
     flatNumber?: string | null;
     residence?: string | null;

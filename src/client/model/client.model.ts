@@ -13,8 +13,8 @@ export class Clients implements ClientInterface {
     @Column({ nullable: true })
     lastName: string
 
-    @Column({ type: 'integer', unique: true, nullable: true })
-    phoneNumber: number
+    @Column({ length: 13, unique: true, nullable: true })
+    phoneNumber: string
 
     @Column({ nullable: true, unique: true })
     emailId: string
