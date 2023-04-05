@@ -1,4 +1,4 @@
-import { Repository } from 'typeorm';
+import { Repository, JoinColumn, JoinTable } from 'typeorm';
 import { Clients } from './../model/client.model';
 import { ClientInterface } from './../model/client.interface';
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
@@ -14,7 +14,7 @@ export class ClientService {
 
     create = async (clientData: ClientInterface) => {
         try {
-            if (!this.isExits(clientData)) {
+            if (!await this.isExits(clientData)) {
                 return await this.clientRepository.save(clientData);
             } else {
                 throw new HttpException("Client already exists", HttpStatus.CONFLICT)
@@ -25,13 +25,16 @@ export class ClientService {
     }
 
     getList = async () => {
-        const data = await this.clientRepository.find()
+        const data = await this.clientRepository.find({ relations: ['measurements', 'measurements.measurementType'] })
         return data
     }
 
     isExits = async (clientData: ClientInterface) => {
-        const count = await this.clientRepository.count({ where: [{ emailId: clientData.emailId }, { phoneNumber: clientData.phoneNumber }] })
-        return count > 0
+        if (clientData.emailId || clientData.phoneNumber) {
+            const count = await this.clientRepository.count({ where: [{ emailId: clientData.emailId }, { phoneNumber: clientData.phoneNumber }] })
+            return count > 0
+        }
+        return false
     }
 
 }

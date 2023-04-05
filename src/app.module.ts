@@ -1,3 +1,4 @@
+import { FileHandlerModule } from './file-handler/file-handler.module';
 import { ClientModule } from './client/client.module';
 import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -17,9 +18,9 @@ import { MeasurementTypeModule } from './measurement-type/measurement-type.modul
       type: 'mysql',
       host: process.env.DATABASE_HOST,
       port: process.env.DATABASE_PORT as any,
-      username: process.env.DATABASE_USER, 
+      username: process.env.DATABASE_USER,
       database: process.env.DATABASE_NAME,
-      password: process.env.DATABASE_PASSWORD, 
+      password: process.env.DATABASE_PASSWORD,
       autoLoadEntities: true,
       ssl: true,
       extra: {
@@ -27,11 +28,12 @@ import { MeasurementTypeModule } from './measurement-type/measurement-type.modul
           rejectUnauthorized: false
         }
       },
-      synchronize:true,
+      synchronize: true,
       logging: true
     }),
+    FileHandlerModule,
+    MeasurementTypeModule,
     ClientModule,
-    MeasurementTypeModule
   ],
   controllers: [
     AppController,

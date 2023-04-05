@@ -1,5 +1,8 @@
+import { MeasurementType } from './../../measurement-type/model/measurement-type.model';
+import { clientMeasurementInterface } from './../client-measurement/model/client-measurement.interface';
+import { ClientMeasurement } from './../client-measurement/model/client-measurement.model';
 import { ClientInterface } from './client.interface';
-import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, Entity, JoinColumn, JoinTable, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity()
 export class Clients implements ClientInterface {
@@ -36,6 +39,12 @@ export class Clients implements ClientInterface {
     @UpdateDateColumn({ type: 'timestamp' })
     updatedAt: Date
 
+    // relationship
+    @OneToMany(type => ClientMeasurement, clientMeasurement => clientMeasurement.client,)
+    @JoinColumn()
+    measurements: MeasurementType[]
+
+    // function
     @BeforeUpdate()
     @BeforeInsert()
     properEmail() {

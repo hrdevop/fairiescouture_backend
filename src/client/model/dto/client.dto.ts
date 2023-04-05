@@ -1,6 +1,5 @@
-import { Allow, IsEmail, IsEmpty, IsInt, IsNotEmpty, IsOptional, IsString, Length, isPassportNumber, IsPhoneNumber } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsOptional, IsString, IsPhoneNumber } from 'class-validator';
 import { ClientInterface } from './../client.interface';
-import { Transform } from 'class-transformer';
 
 export class ClientDto extends ClientInterface {
 

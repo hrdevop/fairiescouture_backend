@@ -11,6 +11,6 @@ async function bootstrap() {
   app.use(helmet())
   app.use(compression())
   app.setGlobalPrefix('api')
-  await app.listen(3000);
+  await app.listen(3000,'0.0.0.0');
 }
 bootstrap();

@@ -13,7 +13,7 @@ export class MeasurementTypeService {
 
     create = async (measurementType: MeasurementTypeInterface) => {
         try {
-            if (!this.isExits(measurementType)) {
+            if (! await this.isExits(measurementType)) {
                 return await this.measurementTypeRepository.save(measurementType)
             } else {
                 throw new HttpException("Measurement type already exists", HttpStatus.CONFLICT);
@@ -23,8 +23,15 @@ export class MeasurementTypeService {
         }
     }
 
-    isExits = async (measurementType: MeasurementTypeInterface) => {
+    list = async () => {
+        return this.measurementTypeRepository.find()
+    }
+
+    private isExits = async (measurementType: MeasurementTypeInterface) => {
         const count = await this.measurementTypeRepository.count({ where: measurementType })
-        return count > 0
+        if (count) {
+            return count > 0
+        }
+        return false
     }
 }

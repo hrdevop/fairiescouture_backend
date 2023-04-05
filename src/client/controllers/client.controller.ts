@@ -11,13 +11,13 @@ export class ClientController {
         private readonly clientService: ClientService) {
     }
 
-    @Post('create')
+    @Post()
     create(@Body() clientData: ClientDto) {
         let clientEntity = this.clientHelperService.createClientDtoToEntity(clientData)
         return this.clientService.create(clientEntity)
     }
 
-    @Get('list')
+    @Get()
     getList() {
         return this.clientService.getList()
     }
