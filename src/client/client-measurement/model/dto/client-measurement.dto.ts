@@ -1,7 +1,7 @@
-import { Transform } from 'class-transformer';
-import { IsNotEmpty, IsNumber, IsOptional, IsUUID, } from "class-validator";
+import { IsNotEmpty, IsOptional, IsUUID, } from "class-validator";
+import { clientMeasurementInterface } from '../client-measurement.interface';
 
-export class ClientMeasurementDto {
+export class ClientMeasurementDto implements clientMeasurementInterface {
     @IsNotEmpty()
     @IsUUID('all')
     clientId: string;

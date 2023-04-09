@@ -1,5 +1,6 @@
 export class ClientInterface {
-    firstName: string;
+    id?: string;
+    firstName?: string;
     lastName?: string | null;
     phoneNumber?: string;
     emailId?: string | null;

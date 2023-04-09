@@ -1,5 +1,5 @@
+
 import { MeasurementType } from './../../measurement-type/model/measurement-type.model';
-import { clientMeasurementInterface } from './../client-measurement/model/client-measurement.interface';
 import { ClientMeasurement } from './../client-measurement/model/client-measurement.model';
 import { ClientInterface } from './client.interface';
 import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, Entity, JoinColumn, JoinTable, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'

@@ -3,6 +3,7 @@ import { clientMeasurementInterface } from 'src/client/client-measurement/model/
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { ClientInterface } from 'src/client/model/client.interface';
 
 @Injectable()
 export class ClientMeasurementService {
@@ -24,8 +25,8 @@ export class ClientMeasurementService {
         }
     }
 
-    getClientMeasurement = async (clientId: string): Promise<clientMeasurementInterface[]> => {
-        return await this.clientMeasurementRepository.find({ where: { clientId: clientId } })
+    getClientMeasurement = async (client: ClientInterface): Promise<clientMeasurementInterface[]> => {
+        return await this.clientMeasurementRepository.find({ where: { client: client }, relations: ['measurementType'] })
     }
 
     private isExist = async (clientMeasurementInterface: clientMeasurementInterface) => {

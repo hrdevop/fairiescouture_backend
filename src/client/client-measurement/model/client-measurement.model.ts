@@ -1,7 +1,7 @@
-import { MeasurementType } from './../../../measurement-type/model/measurement-type.model';
-import { Clients } from 'src/client/model/client.model';
+import { MeasurementType } from 'src/measurement-type/model/measurement-type.model';
 import { clientMeasurementInterface } from './client-measurement.interface';
 import { Column, CreateDateColumn, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn, TableForeignKey, UpdateDateColumn } from "typeorm";
+import { Clients } from 'src/client/model/client.model';
 
 @Entity()
 export class ClientMeasurement implements clientMeasurementInterface {
@@ -25,12 +25,12 @@ export class ClientMeasurement implements clientMeasurementInterface {
     updatedAt: Date
 
 
-    // relationship
+   // relationship
     @ManyToOne(type => Clients, client => client, { cascade: true })
     // @JoinColumn()
     client: Clients[];
 
     @ManyToOne(type => MeasurementType, measurementType => measurementType, { cascade: true })
-    // @JoinColumn()
+    @JoinColumn()
     measurementType: MeasurementType;
 }

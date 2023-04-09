@@ -1,10 +1,10 @@
-import { OrderClothCostInterface } from './interface/order-cloth-cost.interface';
+import { OrderClothesCostInterface } from './interface/order-clothes-cost.interface';
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { OrderClothes } from './order-cloth.model';
+import { OrderClothes } from './order-clothes.model';
 
 @Entity()
 
-export class OrderClothCosts implements OrderClothCostInterface {
+export class OrderClothesCost implements OrderClothesCostInterface {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 

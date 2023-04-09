@@ -1,11 +1,11 @@
 import { Files } from 'src/file-handler/model/file-handler.model';
-import { OrderClothReferencesInterface } from './interface/order-cloth-references.interface';
-import { OrderClothes } from './order-cloth.model';
+import { OrderClothesReferencesInterface } from './interface/order-clothes-references.interface';
+import { OrderClothes } from './order-clothes.model';
 import { CreateDateColumn, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 
-export class OrderClothReferences implements OrderClothReferencesInterface {
+export class OrderClothesReferences implements OrderClothesReferencesInterface {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 

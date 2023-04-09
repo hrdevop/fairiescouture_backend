@@ -1,7 +1,7 @@
 import { MeasurementType } from "src/measurement-type/model/measurement-type.model";
-import { OrderClothes } from "../order-cloth.model";
+import { OrderClothes } from "../order-clothes.model";
 
-export class OrderClothMeasurementInterface {
+export class OrderClothesMeasurementsInterface {
     id?: string;
 
     orderClothes: OrderClothes;

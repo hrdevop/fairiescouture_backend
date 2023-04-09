@@ -1,11 +1,11 @@
-import { OrderClothMeasurementInterface } from './interface/order-cloth-measurement.interface';
+import { OrderClothesMeasurementsInterface } from './interface/order-clothes-measurements.interface';
 import { Column, CreateDateColumn, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { OrderClothes } from './order-cloth.model';
+import { OrderClothes } from './order-clothes.model';
 import { MeasurementType } from 'src/measurement-type/model/measurement-type.model';
 
 @Entity()
 
-export class OrderClothMeasurements implements OrderClothMeasurementInterface {
+export class OrderClothesMeasurements implements OrderClothesMeasurementsInterface {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 

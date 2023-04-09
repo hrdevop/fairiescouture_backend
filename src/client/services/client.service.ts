@@ -25,7 +25,7 @@ export class ClientService {
     }
 
     getList = async () => {
-        const data = await this.clientRepository.find({ relations: ['measurements', 'measurements.measurementType'] })
+        const data = await this.clientRepository.find()
         return data
     }
 
